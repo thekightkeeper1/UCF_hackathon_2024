@@ -7,12 +7,18 @@ const {transform, getFonts, revertTransform} = require('convert-unicode-fonts');
 const commands = [
     {
     name: "font",
-    description: "cga",
+    description: "Changes text to requested font",
     options: [
         {
-            name: 'word',
-            description: 'word they want repeated',
+            name: 'fonttype',
+            description: 'font wanted',
             type: ApplicationCommandOptionType.String,
+            required: true,
+        },
+        {
+            name:'text',
+            description:'inputted text',
+            type:ApplicationCommandOptionType.String,
             required: true,
         },
     ]
@@ -60,10 +66,11 @@ async function add_cmd(rest, commands, Routes) {
 client.on('interactionCreate', (interaction) => {
     if(!interaction.isChatInputCommand) return;
 
-    if(interaction.commandName === 'repetir'){
-        const word = interaction.options.get('word').value;
+    if(interaction.commandName === 'font'){
+        const font = interaction.options.get('fonttype').value;       
+        const word = interaction.options.get('text').value;
         const fonts = getFonts();
-        const s = transform(word, fonts['bold']);
+        const s = transform(word, fonts[font]);
         interaction.reply(s);
     }
 })
