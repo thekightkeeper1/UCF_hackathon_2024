@@ -10,6 +10,76 @@ const commands = [
         name: "fonttype",
         description: "font wanted",
         type: ApplicationCommandOptionType.String,
+        choices: [
+          {
+            name:'bold',
+            value:'bold',
+          },
+          {
+            name:'italic',
+            value:'italic',
+          },
+          {
+            name:'bold italic',
+            value:'boldItalic',
+          },
+          {
+            name:'script bold',
+            value:'scriptBold',
+          },
+          {
+            name:'bold fraktur',
+            value:'boldFraktur',
+          },
+          {
+            name:'sans serif',
+            value:'sansSerif',
+          },
+          {
+            name:'sans serif bold',
+            value:'sansSerifBold',
+          },
+          {
+            name:'sans serif italic',
+            value:'sansSerifItalic',
+          },
+          {
+            name:'monospace',
+            value:'monospace',
+          },
+          {
+            name:'parenthesized',
+            value:'parenthesized',
+          },
+          {
+            name:'circled',
+            value:'circled',
+          },
+          {
+            name:'squared capital',
+            value:'squaredCapital',
+          },
+          {
+            name:'negative circled capital',
+            value:'negativeCircledCapital',
+          },
+          {
+            name:'negative squared capital',
+            value:'negativeSquaredCapital',
+          },
+          {
+            name:'full width',
+            value:'fullwidth',
+          },
+          {
+            name:'myanmar',
+            value:'fullWidth',
+          },
+          {
+            name:'cherokee',
+            value:'cherokee',
+          },
+        ],
         required: true,
       },
       {
