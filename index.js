@@ -1,13 +1,27 @@
-require('dotenv').config()
+require('dotenv').config();
 
-const {Client, IntentsBitField} = require('discord.js');
+const {Client, IntentsBitField, REST, Routes} = require('discord.js');
 
+
+const commands = [
+    {
+    name: "your mom",
+    description: "Replies with Pong!",
+    },
+];
+
+const rest = new REST({ version: "10" }).setToken(
+    process.env.DISCORD_TOKEN
+);
+
+add_cmd(rest, commands, Routes)
 const client = new Client({
     intents: [
         IntentsBitField.Flags.Guilds,
         IntentsBitField.Flags.GuildMembers,
         IntentsBitField.Flags.GuildMessages,
         IntentsBitField.Flags.MessageContent,
+        IntentsBitField.Flags.DirectMessages,
     ],
 });
 
@@ -24,3 +38,20 @@ client.on("messageCreate", async (message) =>{
         message.author.send(`Echo ${message.content}`);
     }
 })
+
+async function add_cmd(rest, commands, Routes) {
+  try {
+    console.log("Started refreshing application (/) commands.");
+
+    await rest.put(
+      Routes.applicationGuildCommands("1291989452171776031", "1291989889520369714"),
+      {
+        body: commands,
+      }
+    );
+
+    console.log("Successfully reloaded application (/) commands.");
+  } catch (error) {
+    console.error(error);
+  }
+}
