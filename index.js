@@ -5,7 +5,7 @@ const {Client, IntentsBitField, REST, Routes} = require('discord.js');
 
 const commands = [
     {
-    name: "your mom",
+    name: "your_mom",
     description: "Replies with Pong!",
     },
 ];
