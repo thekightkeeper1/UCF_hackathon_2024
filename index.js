@@ -1,35 +1,14 @@
     require('dotenv').config();
 
-const {Client, IntentsBitField, REST, Routes, ApplicationCommandOptionType } = require('discord.js');
+const {Client, IntentsBitField, REST, Routes, ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const {transform, getFonts, revertTransform} = require('convert-unicode-fonts');
 
-
-const commands = [
-    {
-    name: "font",
-    description: "Changes text to requested font",
-    options: [
-        {
-            name: 'fonttype',
-            description: 'font wanted',
-            type: ApplicationCommandOptionType.String,
-            required: true,
-        },
-        {
-            name:'text',
-            description:'inputted text',
-            type:ApplicationCommandOptionType.String,
-            required: true,
-        },
-    ]
-    },
-];
 
 const rest = new REST({ version: "10" }).setToken(
     process.env.DISCORD_TOKEN
 );
 
-add_cmd(rest, commands, Routes)
+// add_cmd(rest, commands, Routes)
 const client = new Client({
     intents: [
         IntentsBitField.Flags.Guilds,
@@ -46,22 +25,6 @@ client.on('ready', (c) => {
 
 client.login(process.env.DISCORD_TOKEN);
 
-async function add_cmd(rest, commands, Routes) {
-  try {
-    console.log("Started refreshing application (/) commands.");
-
-    await rest.put(
-      Routes.applicationCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
-      {
-        body: commands,
-      }
-    );
-
-    console.log("Successfully reloaded application (/) commands.");
-  } catch (error) {
-    console.error(error);
-  }
-}
 
 client.on('interactionCreate', (interaction) => {
     if(!interaction.isChatInputCommand) return;
