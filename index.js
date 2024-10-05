@@ -1,12 +1,13 @@
     require('dotenv').config();
 
 const {Client, IntentsBitField, REST, Routes, ApplicationCommandOptionType } = require('discord.js');
+const {transform, getFonts, revertTransform} = require('convert-unicode-fonts');
 
 
 const commands = [
     {
-    name: "repetir",
-    description: "Repeats",
+    name: "font",
+    description: "cga",
     options: [
         {
             name: 'word',
@@ -44,7 +45,7 @@ async function add_cmd(rest, commands, Routes) {
     console.log("Started refreshing application (/) commands.");
 
     await rest.put(
-      Routes.applicationCommands("1291989452171776031", "1291989889520369714"),
+      Routes.applicationCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
       {
         body: commands,
       }
@@ -61,6 +62,8 @@ client.on('interactionCreate', (interaction) => {
 
     if(interaction.commandName === 'repetir'){
         const word = interaction.options.get('word').value;
-        interaction.reply(word);
+        const fonts = getFonts();
+        const s = transform(word, fonts['bold']);
+        interaction.reply(s);
     }
 })
