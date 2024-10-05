@@ -1,4 +1,5 @@
-    require('dotenv').config();
+require('dotenv').config();
+templates = require('./embeds')
 
 const {Client, IntentsBitField, REST, Routes, ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const {transform, getFonts, revertTransform} = require('convert-unicode-fonts');
@@ -35,5 +36,15 @@ client.on('interactionCreate', (interaction) => {
         const fonts = getFonts();
         const s = transform(word, fonts[font]);
         interaction.reply(s);
+        return;
+    } if (interaction.commandName === 'embed_gen') {
+        const template = interaction.options.get('template').value
+        console.log(template);
+
+        // parse options
+        embed = templates[template]();
+        interaction.reply({ embeds: [embed]})
+        return;
+
     }
 })
