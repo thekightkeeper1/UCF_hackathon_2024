@@ -31,14 +31,6 @@ client.on('ready', (c) => {
 
 client.login(process.env.DISCORD_TOKEN);
 
-client.on("messageCreate", async (message) =>{
-    console.log(message)
-
-    if(!message?.author.bot){
-        message.author.send(`Echo ${message.content}`);
-    }
-})
-
 async function add_cmd(rest, commands, Routes) {
   try {
     console.log("Started refreshing application (/) commands.");
