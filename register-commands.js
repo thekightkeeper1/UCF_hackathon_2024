@@ -20,18 +20,18 @@ const commands = [
       },
     ],
   },
+
   {
     name: "embed_gen",
     description: "Run <smth> to see what you can do with this command"
 
-  }
+  },
 ];
 
 const rest = new REST({version: 10}).setToken(process.env.DISCORD_TOKEN);
 
 
 (async () => {
-    console.log("did something");
     try {
         console.log('Registering commands');
         await rest.put(
