@@ -15,5 +15,9 @@
     "url": "https://github.com/thekightkeeper1/UCF_hackathon_2024/issues"
   },
   "homepage": "https://github.com/thekightkeeper1/UCF_hackathon_2024#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5"
+  }
 }
