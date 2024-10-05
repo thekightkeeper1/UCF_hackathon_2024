@@ -1,12 +1,20 @@
-require('dotenv').config();
+    require('dotenv').config();
 
-const {Client, IntentsBitField, REST, Routes} = require('discord.js');
+const {Client, IntentsBitField, REST, Routes, ApplicationCommandOptionType } = require('discord.js');
 
 
 const commands = [
     {
-    name: "your_mom",
-    description: "Replies with Pong!",
+    name: "repetir",
+    description: "Repeats",
+    options: [
+        {
+            name: 'word',
+            description: 'word they want repeated',
+            type: ApplicationCommandOptionType.String,
+            required: true,
+        },
+    ]
     },
 ];
 
@@ -36,7 +44,7 @@ async function add_cmd(rest, commands, Routes) {
     console.log("Started refreshing application (/) commands.");
 
     await rest.put(
-      Routes.applicationGuildCommands("1291989452171776031", "1291989889520369714"),
+      Routes.applicationCommands("1291989452171776031", "1291989889520369714"),
       {
         body: commands,
       }
@@ -47,3 +55,12 @@ async function add_cmd(rest, commands, Routes) {
     console.error(error);
   }
 }
+
+client.on('interactionCreate', (interaction) => {
+    if(!interaction.isChatInputCommand) return;
+
+    if(interaction.commandName === 'repetir'){
+        const word = interaction.options.get('word').value;
+        interaction.reply(word);
+    }
+})
