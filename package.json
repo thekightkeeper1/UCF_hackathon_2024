@@ -1,7 +1,6 @@
 {
   "name": "knighthacks2024",
   "version": "1.0.0",
-  
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,6 +17,7 @@
   "homepage": "https://github.com/thekightkeeper1/UCF_hackathon_2024#readme",
   "description": "",
   "dependencies": {
+    "convert-unicode-fonts": "^1.0.1",
     "discord.js": "^14.16.3",
     "dotenv": "^16.4.5"
   }
