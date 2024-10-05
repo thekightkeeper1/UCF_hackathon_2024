@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const {Client, IntentsBitField} = require('discord.js');
 
 const client = new Client({
@@ -13,7 +15,7 @@ client.on('ready', (c) => {
     console.log(`${c.user.username} is online`);
 });
 
-client.login("MTI5MTk4OTQ1MjE3MTc3NjAzMQ.GTJX3H.IDHJ-Bp2dEYWlURYPNAPAvLHvaqU5Zv4L_nPAQ");
+client.login(process.env.DISCORD_TOKEN);
 
 client.on("messageCreate", async (message) =>{
     console.log(message)
