@@ -189,12 +189,6 @@ const commands = [
         type: ApplicationCommandOptionType.String,
         required: true,
       },
-      {
-        name: "font",
-        description: "Font of text.",
-        type: ApplicationCommandOptionType.String,
-        required: true,
-      },
     ], 
   },
 ];

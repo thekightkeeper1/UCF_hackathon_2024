@@ -65,7 +65,6 @@ client.on('interactionCreate', async (interaction) => {
     else if (interaction.commandName === 'color') {
         const color = interaction.options.get('color').value;
         const text = interaction.options.get('text').value;
-        const font = interaction.options.get('font').value;
 
         const data = JSON.stringify({
             html: `<link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
