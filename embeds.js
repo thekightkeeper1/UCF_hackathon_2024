@@ -22,35 +22,26 @@ function yourmom(options) {
 
 
 function announcement(options) {
-  const author = options.find((e) => e.name === "author")?.value;
-  const title_url = options.find((e) => e.name === "title_url")?.value;
-  const title_text = options.find((e) => e.name === "title_text")?.value;
-  const body_text = options.find((e) => e.name === "body_text")?.value;
-  const image = options.find((e) => e.name === "image_url")?.value;
-  const footer = options.find((e) => e.name === "footer")?.value;
-  const thumbnail = options.find((e) => e.name === "thumbnail")?.value;
-  const color = options.find((e) => e.name === "color")?.value;
-
   // Construct the Embed
+  console.log(options.image_url);
   const embed = new EmbedBuilder()
     .setAuthor({
-      name: author || "Default Author",
+      name: options.author,
     })
-    .setTitle(title_text || "Default Title")
-    .setURL(title_url || "https://default-url.com")
-    .setDescription(body_text || "Default body text")
-    .setImage(
-      image || "https://cubedhuang.com/images/alex-knight-unsplash.webp"
-    )
-    .setThumbnail(thumbnail || "https://dan.onl/images/emptysong.jpg")
-    .setColor(color || "#00b0f4")
+    .setTitle(options.title_text)
+    .setURL(options.title_url)
+    .setDescription(options.body_text)
+    .setImage(options.image_url)
+    .setThumbnail(options.thumbnail_url)
+    .setColor(options.color)
     .setFooter({
-      text: footer || "Default footer",
+      text: options.footer_text,
     })
     .setTimestamp();
 
   return embed;
 }
+
 
 
 module.exports = templates;
