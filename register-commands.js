@@ -193,6 +193,7 @@ const commands = [
         name: "font",
         description: "Font of text.",
         type: ApplicationCommandOptionType.String,
+        required: true,
       },
     ], 
   },
