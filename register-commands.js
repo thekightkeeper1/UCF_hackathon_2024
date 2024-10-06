@@ -96,6 +96,49 @@ const commands = [
     description: "Run <smth> to see what you can do with this command"
 
   },
+  /*
+  {
+    name: "color",
+    description: "Embed text with the color of your choice",
+    options: [
+      {
+        name: "color",
+        description: "Color of text.",
+        type: ApplicationCommandOptionType.String,
+        required: true,
+      },
+      {
+        name: "text",
+        description: "Text that will be displayed.",
+        type: ApplicationCommandOptionType.String,
+        required: true,
+      },
+    ],
+  },
+  */
+  {
+    name: "color",
+    description: "Send text with the color of your choice",
+    options: [
+      {
+        name: "color",
+        description: "Color of text.",
+        type: ApplicationCommandOptionType.String,
+        required: true,
+      },
+      {
+        name: "text",
+        description: "Text that will be displayed.",
+        type: ApplicationCommandOptionType.String,
+        required: true,
+      },
+      {
+        name: "font",
+        description: "Font of text.",
+        type: ApplicationCommandOptionType.String,
+      },
+    ], 
+  },
 ];
 
 const rest = new REST({version: 10}).setToken(process.env.DISCORD_TOKEN);
