@@ -39,12 +39,14 @@ client.on('interactionCreate', (interaction) => {
         return;
     } if (interaction.commandName === 'embed_gen') {
         const template = interaction.options.get('template').value
-        console.log(template);
 
         // parse options
-        embed = templates[template]();
+        console.log(interaction.options);
+        embed = templates[template](Array(interaction.options));
         interaction.reply({ embeds: [embed]})
         return;
+        interaction.reply("worked maybe");
+
 
     }
 })
